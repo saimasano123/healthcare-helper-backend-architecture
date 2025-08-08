@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import insurance  # This will be your routes module
+from routers import insurance, nlp  # dono routers import kar liye
 
 app = FastAPI(
     title="Healthcare AI Assistant Backend",
@@ -8,6 +8,7 @@ app = FastAPI(
 )
 
 app.include_router(insurance.router, prefix="/api/insurance", tags=["Insurance"])
+app.include_router(nlp.router, prefix="/api/nlp", tags=["NLP"])  # nlp router bhi add kar diya
 
 @app.get("/")
 def root():
